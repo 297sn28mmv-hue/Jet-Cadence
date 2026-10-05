@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JET CADENCE — Кавер-группа Челябинск</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent-red: #d32f2f;
+            --accent-hover: #b71c1c;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            /* ВСТАВЬТЕ СЮДА ПРЯМУЮ ССЫЛКУ НА ФОТО С КОНЦЕРТА */
+            background-image: url('PHOTO_HERE'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-main);
+            padding: 20px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--accent-red);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover { background-color: var(--accent-hover); }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Formats */
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .format-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .format-card h3 {
+            margin-bottom: 15px;
+            color: var(--accent-red);
+        }
+
+        /* Dates */
+        .dates-block {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .dates-block p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .dates-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .date-tag {
+            background-color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--text-main);
+        }
+
+        /* Videos */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-frame {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .review-card p {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-card span {
+            display: block;
+            text-align: right;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
+        /* Contacts */
+        .contacts {
+            text-align: center;
+            background-color: var(--bg-card);
+            padding: 50px 20px;
+            border-radius: 8px;
+        }
+
+        .contacts p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .contacts a {
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contacts a:hover { text-decoration: underline; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>JET CADENCE<br>Живая музыка на ваше событие</h1>
+            <p>Кавер-группа из Челябинска. На сцене с 2010 года. Хиты от The Beatles до современных поп-номеров.</p>
+            <a href="mailto:booking@jetcadence.ru" class="btn">Забронировать дату</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- О группе -->
+        <section>
+            <h2>О группе</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto;">
+                Мы создаём атмосферу, где каждый гость становится частью концерта. От утончённого джаза до танцевального рока — подберём программу под ваш вечер. Готовим любимые песни под заказ, привозим свой звук и работаем по компактному райдеру.
+            </p>
+        </section>
+
+        <!-- Галерея -->
+        <section>
+            <h2>Наша атмосфера</h2>
+            <div class="gallery-grid">
+                <!-- Фото 1: Сцена и публика (драйв) -->
+                <div class="gallery-item">
+                    <img src="PHOTO_LINK_1" alt="Группа на сцене, публика с поднятыми руками">
+                    <div class="gallery-caption">Живой концерт: энергия зала</div>
+                </div>
+                <!-- Фото 2: Красные подушки (стиль) -->
+                <div class="gallery-item">
+                    <img src="PHOTO_LINK_2" alt="Участники группы на красных подушках">
+                    <div class="gallery-caption">Стиль и расслабленность</div>
+                </div>
+                <!-- Фото 3: Нуар с линиями (арт) -->
+                <div class="gallery-item">
+                    <img src="PHOTO_LINK_3" alt="Арт-фото группы с красными линиями">
+                    <div class="gallery-caption">Арт-съёмка: геометрия и контраст</div>
+                </div>
+                <!-- Фото 4: Логотип (фирменный стиль) -->
+                <div class="gallery-item">
+                    <img src="PHOTO_LINK_4" alt="Группа на фоне логотипа JET CADENCE">
+                    <div class="gallery-caption">Фирменный стиль JET CADENCE</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Форматы -->
+        <section>
+            <h2>Два формата под ваше событие</h2>
+            <div class="formats-grid">
+                <div class="format-card">
+                    <h3>🎸 Полный состав</h3>
+                    <p>Вокал, две гитары, бас, барабаны. Полный драйв и мощный звук. Идеально для свадеб, корпоративов и больших площадок от 50 человек.</p>
+                </div>
+                <div class="format-card">
+                    <h3>🎶 Акустический дуэт «Get Back»</h3>
+                    <p>Горлов & Бирюков: два голоса, две гитары. Камерный вайб и теплота. Для небольших свадеб, ресторанов и юбилеев.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Свободные даты -->
+        <section>
+            <h2>Свободные даты</h2>
+            <div class="dates-block">
+                <p>Декабрь почти закрыт — осталось немного свободных дат (в основном будни и новогодняя ночь). По октябрю и ноябрю — пишите, подберём формат и зафиксируем дату.</p>
+                <div class="dates-list">
+                    <span class="date-tag">Октябрь: 10, 16, 17, 31</span>
+                    <span class="date-tag">Ноябрь: 6, 7, 13, 20, 21, 27, 28</span>
+                    <span class="date-tag">Декабрь: 14, 15, 16, 21, 22, 23, 28, 31</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Видео -->
+        <section>
+            <h2>Смотрите нас вживую</h2>
+            <div class="videos-grid">
+                <!-- Видео 1 -->
+                <div class="video-frame">
+                    <iframe src="https://vk.com/video_ext.php?oid=-17133478&id=456239780&hash=0" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <!-- Видео 2 -->
+                <div class="video-frame">
+                    <iframe src="https://vk.com/video_ext.php?oid=-17133478&id=456240158&hash=0" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <!-- Видео 3 -->
+                <div class="video-frame">
+                    <iframe src="https://vk.com/video_ext.php?oid=-17133478&id=456239687&hash=0" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section>
+            <h2>Что говорят клиенты</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <p>«Ребята, вы волшебники. Мы и наши гости в восторге от вашего репертуара и исполнения»</p>
+                    <span>— Ирина</span>
+                </div>
+                <div class="review-card">
+                    <p>«Репертуар у них просто от Бога, не как у других попсовых исполнителей. Вы просто огонь»</p>
+                    <span>— Екатерина</span>
+                </div>
+                <div class="review-card">
+                    <p>«Был на двух мероприятиях с ними до своей свадьбы — выбор был очевиден. Всё звучало на высочайшем уровне»</p>
+                    <span>— Степан</span>
+                </div>
+                <div class="review-card">
+                    <p>«Без вас не было бы такого заряженного весельем дня»</p>
+                    <span>— Анастасия</span>
+                </div>
+                <div class="review-card">
+                    <p>«Вы созданы для сцены»</p>
+                    <span>— Администрация Советского района, корпоратив</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="contacts">
+            <h2>Свяжитесь с нами</h2>
+            <p>Готовы обсудить ваш вечер и подобрать идеальный формат.</p>
+            <p>📞 Телефон: +7 (950) 743-76-62</p>
+            <p>💬 Пишите в личные сообщения группы ВКонтакте: <a href="https://vk.ru/jet.cadence">vk.ru/jet.cadence</a></p>
+            <p><a href="TELEGRAM_URL">Telegram: @jetcadence</a></p>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2024 JET CADENCE. Челябинск.
+    </footer>
+
+</body>
+</html>
